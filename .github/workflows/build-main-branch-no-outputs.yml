@@ -19,10 +19,10 @@ jobs:
         dotnet-version: 3.1.301
     
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore "${{ github.workspace }}/MvcMovie/MvcMovie.csproj"
     
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" --configuration Release --no-restore
     
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" --no-restore --verbosity normal
