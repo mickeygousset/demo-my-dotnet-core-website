@@ -1,0 +1,27 @@
+name: Manual Build - Main Branch
+
+on:
+  workflow_dispatch
+  
+jobs:
+  build-main:
+    name: "Build Of Main Branch"
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    
+    - name: Install dependencies
+      run: dotnet restore "${{ github.workspace }}/MvcMovie/MvcMovie.csproj"
+    
+    - name: Build
+      run: dotnet build "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" --configuration Release --no-restore
+    
+    - name: Test
+      run: dotnet test "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" --no-restore --verbosity normal
