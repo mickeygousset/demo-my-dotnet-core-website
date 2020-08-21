@@ -1,7 +1,11 @@
 name: Workflow Triggers Workflow Demo - Second Workflow
 
 on:
-  workflow_dispatch
+  workflow_run:
+    workflows: ["Workflow Triggers Workflow Demo - First Workflow"]
+    branches: [main, workflow-trigger-workflow]
+    types: 
+      - completed
   
 jobs:
   after-build-main:
