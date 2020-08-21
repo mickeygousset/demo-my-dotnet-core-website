@@ -1,0 +1,16 @@
+name: Workflow Triggers Workflow Demo - Second Workflow
+
+on:
+  workflow_dispatch
+  
+jobs:
+  after-build-main:
+    name: "Workflow Trigger Workflow - Triggered After Build"
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Hello World
+    run: echo "Hello World"
