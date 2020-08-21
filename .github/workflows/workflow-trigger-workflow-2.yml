@@ -3,10 +3,10 @@ name: Workflow Triggers Workflow Demo - Second Workflow
 on:
   workflow_run:
     workflows: ["Workflow Triggers Workflow Demo - First Workflow"]
-    branches: [main]
-    types: 
-      - completed
-      - requested
+    #branches: [main]
+    #types: 
+    #  - completed
+    #  - requested
   
 jobs:
   after-build-main:
