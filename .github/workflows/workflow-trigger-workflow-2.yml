@@ -4,8 +4,8 @@ on:
   workflow_run:
     workflows: ["Workflow Triggers Workflow Demo - First Workflow"]
     #branches: [main]
-    #types: 
-    #  - completed
+    types: 
+      - completed
     #  - requested
   
 jobs:
