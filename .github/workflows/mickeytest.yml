@@ -2,6 +2,11 @@ name: Mickey Test - Main Branch
 
 on:
   workflow_dispatch
+
+env:
+  AZURE_WEBAPP_NAME: dummywebsite     # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '3.1.100'           # set this to the dot net version to use
   
 jobs:
   build-main:
@@ -25,3 +30,19 @@ jobs:
     
     - name: Test
       run: dotnet test "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" --no-restore --verbosity normal
+    
+    - name: Publish
+      run: |
+        dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.0
+      with:
+        # Artifact name
+        name: myartifact
+        # A file, directory or wildcard pattern that describes what to upload
+        path: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp"
+        # The desired behavior if no files are found using the provided path.
+        if-no-files-found: error
+        # Duration after which artifact will expire in days. 0 means using default retention.
+        retention-days: 90
