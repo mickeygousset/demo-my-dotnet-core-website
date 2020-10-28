@@ -40,9 +40,9 @@ jobs:
       run: |
         dir myapp
         
-    - name: tar
+    - name: compress
       run: |
-        tar.exe -c -z -v -f myapp.zip -C myapp .
+        Compress-Archive -Path .\myapp\** -DestinationPath .\myapp.zip
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.0
@@ -62,8 +62,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: "mytagname"
+        release_name: "myreleasename"
         draft: true
         prerelease: false
         
