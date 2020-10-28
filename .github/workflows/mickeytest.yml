@@ -38,7 +38,7 @@ jobs:
         
     - name: dir
       run: |
-        dir
+        dir myapp
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.0
