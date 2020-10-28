@@ -39,7 +39,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.0
       with:
         # Artifact name
-        name: myartifact
+        name: pleasework
         # A file, directory or wildcard pattern that describes what to upload
         path: |
           "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp"
