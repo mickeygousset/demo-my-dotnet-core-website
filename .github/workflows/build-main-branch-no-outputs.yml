@@ -1,8 +1,9 @@
 name: .NET Core
 
-on:
-  push:
-    branches: [ main ]
+# Commented out for now to stop it from running.
+#on:
+#  push:
+#    branches: [ main ]
   
 jobs:
   build-main:
