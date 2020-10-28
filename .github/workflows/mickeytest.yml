@@ -33,7 +33,12 @@ jobs:
     
     - name: Publish
       run: |
-        dotnet publish "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
+        dotnet publish "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" -c Release -o myapp
+#        dotnet publish "${{ github.workspace }}/MvcMovie/MvcMovie.csproj" -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
+        
+    - name: dir
+      run: |
+        dir
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.0
