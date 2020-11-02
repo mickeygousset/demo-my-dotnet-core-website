@@ -1,0 +1,28 @@
+name: Test Release
+
+on:
+  release:
+    types:
+      - published
+      - unpublished
+      - created
+      - edited
+      - deleted
+      - prereleased
+      - released
+      
+jobs:
+ # This workflow contains a single job called "build"
+ say-hello:
+   # The type of runner that the job will run on
+   runs-on: windows-2019
+   # Steps represent a sequence of tasks that will be executed as part of the job
+   steps:
+     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+     
+     - uses: actions/checkout@v2
+     
+     - name: Time To Say Hello 
+       run: |
+         echo ${{ github.event_name }}
+         echo ${{ github.event.action }}
